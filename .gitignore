@@ -6,3 +6,9 @@ src/Genesis.Case/Api/obj/
 src/Genesis.Case/Core/obj/
 
 src/Genesis.Case/Data/obj/
+
+.idea/
+
+src/Genesis.Case/Api/bin/
+
+src/Genesis.Case/Core/bin/
