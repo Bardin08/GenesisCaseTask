@@ -7,13 +7,18 @@ namespace Data.Providers;
 
 public class JsonFileProvider<TKey, TEntity> : IJsonFileProvider<TKey, TEntity>
 {
-    private const string JsonFilesStoragePath = "__/data/json/";
+    private const string DataFolder = "__data";
     private readonly string _dataFilePath;
 
-    public JsonFileProvider()
+    public JsonFileProvider(string fileName)
     {
-        string dataFilesDirectoryPath = Directory.GetCurrentDirectory() + JsonFilesStoragePath;
-        _dataFilePath = dataFilesDirectoryPath + "data.json";
+        string dataFilesDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), DataFolder);
+        if (!Directory.Exists(dataFilesDirectoryPath))
+        {
+            Directory.CreateDirectory(dataFilesDirectoryPath);
+        }
+
+        _dataFilePath = Path.Combine(dataFilesDirectoryPath, fileName);
     }
 
     public async Task<TEntity> CreateAsync(TEntity entity)
@@ -59,7 +64,7 @@ public class JsonFileProvider<TKey, TEntity> : IJsonFileProvider<TKey, TEntity>
         var json = await File.ReadAllTextAsync(_dataFilePath, Encoding.UTF8);
         if (json is {Length: < 2})
         {
-            json = "{}";
+            json = "[]";
         }
         var records = JsonConvert.DeserializeObject<List<TEntity>>(json) ?? new List<TEntity>();
 

@@ -10,6 +10,8 @@ public static class DependencyInjection
     public static void AddCoreLogic(this IServiceCollection services)
     {
         services.AddTransient<ICoinBaseApi, CoinBaseApi>();
+
         services.AddTransient<IExchangeRateService, ExchangeRateService>();
+        services.AddTransient<ISubscriptionService, SubscriptionService>();
     }
 }
