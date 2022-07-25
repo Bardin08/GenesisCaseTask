@@ -5,9 +5,6 @@ on:
     workflows: ["Build and Test"]
     types:
       - completed
-    branches:
-      - master
-      - 'release/**'
 
 jobs:
   build:
@@ -15,6 +12,7 @@ jobs:
     steps:
     - name: Substitute variables
       uses: actions/checkout@v2
+
       uses: microsoft/variable-substitution@v1 
       with:
         files: 'src/Genesis.Case/Api/appsettings.json'
