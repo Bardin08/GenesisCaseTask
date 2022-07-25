@@ -29,6 +29,6 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build . --tag ghcr.io/Bardin08/genesis-case-task:latest
-        docker run ghcr.io/Bardin08/genesis-case-task:latest
-        docker push ghcr.io/Bardin08/genesis-case-task:latest
+        docker build . --tag ghcr.io/bardin08/genesis-case-task:latest
+        docker run ghcr.io/bardin08/genesis-case-task:latest
+        docker push ghcr.io/bardin08/genesis-case-task:latest
