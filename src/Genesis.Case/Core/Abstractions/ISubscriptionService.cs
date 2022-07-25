@@ -1,7 +1,9 @@
+using Core.Models;
+
 namespace Core.Abstractions;
 
 public interface ISubscriptionService
 {
     Task<bool> SubscribeAsync(string email);
-    Task NotifyAsync();
+    Task<SubscriptionNotifyResult> NotifyAsync();
 }

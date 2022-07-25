@@ -58,7 +58,7 @@ public class JsonFileProvider<TKey, TEntity> : IJsonFileProvider<TKey, TEntity>
     {
         if (!File.Exists(_dataFilePath))
         {
-            File.Create(_dataFilePath);
+            File.Create(_dataFilePath).Close();
         }
 
         var json = await File.ReadAllTextAsync(_dataFilePath, Encoding.UTF8);
@@ -66,6 +66,7 @@ public class JsonFileProvider<TKey, TEntity> : IJsonFileProvider<TKey, TEntity>
         {
             json = "[]";
         }
+
         var records = JsonConvert.DeserializeObject<List<TEntity>>(json) ?? new List<TEntity>();
 
         return pageSize switch
@@ -90,7 +91,7 @@ public class JsonFileProvider<TKey, TEntity> : IJsonFileProvider<TKey, TEntity>
     {
         if (!File.Exists(_dataFilePath))
         {
-            File.Create(_dataFilePath);
+            File.Create(_dataFilePath).Close();
         }
 
         var json = JsonConvert.SerializeObject(entities);

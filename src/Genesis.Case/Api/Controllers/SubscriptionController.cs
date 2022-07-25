@@ -47,9 +47,11 @@ public class SubscriptionController : ControllerBase
     /// <returns></returns>
     [HttpPost]
     [Route("/sendEmails")]
+    [Produces("application/json")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> Notify()
     {
-        await _subscriptionService.NotifyAsync();
-        return Ok();
+        var result = await _subscriptionService.NotifyAsync();
+        return Ok(result);
     }
 }
