@@ -40,4 +40,16 @@ public class SubscriptionController : ControllerBase
             ? Ok("Email added successfully!")
             : Conflict("This email is already exists!");
     }
+
+    /// <summary>
+    /// Send email with current course to all subscribers
+    /// </summary>
+    /// <returns></returns>
+    [HttpPost]
+    [Route("/sendEmails")]
+    public async Task<IActionResult> Notify()
+    {
+        await _subscriptionService.NotifyAsync();
+        return Ok();
+    }
 }

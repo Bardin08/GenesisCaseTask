@@ -13,5 +13,6 @@ public static class DependencyInjection
 
         services.AddTransient<IExchangeRateService, ExchangeRateService>();
         services.AddTransient<ISubscriptionService, SubscriptionService>();
+        services.AddTransient<IEmailService, GmailEmailService>();
     }
 }
