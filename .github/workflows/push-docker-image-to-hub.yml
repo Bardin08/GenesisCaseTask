@@ -10,9 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Substitute variables
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
+    - name: Substitute variables
       uses: microsoft/variable-substitution@v1 
       with:
         files: 'src/Genesis.Case/Api/appsettings.json'
