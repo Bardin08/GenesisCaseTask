@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "My API",
+        Title = "Genesis Engineering School Case Task API",
         Description = "An ASP.NET Core Web API for receiving BTC to UAH exchange rate, and notify functionality."
     });
 
