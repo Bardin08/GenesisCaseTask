@@ -20,9 +20,12 @@ public class SubscriptionService : ISubscriptionService
 
     public async Task<bool> SubscribeAsync(string email)
     {
-        // We can't use ReadAsync here, because a model that we store doesn't contains an ID.
-        var isAlreadyExists = (await _emailsStorage.ReadAllAsync(0, 0))
-            .FirstOrDefault(x => x!.Equals(email), null) != null;
+        if (string.IsNullOrEmpty(email) || string.IsNullOrWhiteSpace(email))
+        {
+            return false;
+        }
+
+        var isAlreadyExists = (await _emailsStorage.ReadAsync(email)) != null;
 
         if (isAlreadyExists)
         {
