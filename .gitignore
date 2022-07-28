@@ -14,3 +14,5 @@ src/Genesis.Case/Api/bin/
 src/Genesis.Case/Core/bin/
 
 src/Genesis.Case/Data/bin/
+
+src/Genesis.Case/UnitTests/bin/
