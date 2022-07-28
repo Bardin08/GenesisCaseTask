@@ -13,4 +13,10 @@ public class JsonEmailsStorage : JsonFileProvider<string, string>, IJsonEmailsSt
     public JsonEmailsStorage() : base(FileName)
     {
     }
+
+    public new async Task<string?> ReadAsync(string email)
+    {
+        var allEmails = await ReadAllAsync();
+        return allEmails.FirstOrDefault(x => x!.Equals(email), null);
+    }
 }

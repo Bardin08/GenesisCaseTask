@@ -9,6 +9,5 @@ public class CoinbaseRatesResponse
 
 public class Data
 {
-    public string? Currency { get; set; }
     public JToken? Rates { get; set; }
 }

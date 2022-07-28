@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Data.Providers;
 
-public class JsonFileProvider<TKey, TEntity> : IJsonFileProvider<TKey, TEntity>
+public abstract class JsonFileProvider<TKey, TEntity> : IJsonFileProvider<TKey, TEntity>
 {
     private const string DataFolder = "__data";
     private readonly string _dataFilePath;
